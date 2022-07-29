@@ -19,8 +19,10 @@ axios.request({
 function chicken_success(response){
     box[`innerHTML`] +=`<h1> Below are the chicken based meal </h1>`;
     for (let i =0; i<response[`data`][`meals`].length; i++){
-    box[`innerHTML`] += `<h2>Name: ${response[`data`][`meals`][i][`strMeal`]}</h2>`;
-    box[`innerHTML`] += `<img src="${response[`data`][`meals`][i][`strMealThumb`]}"/>`;
+    box[`innerHTML`] += `<div id="chicken_box"> <h2>Name: ${response[`data`][`meals`][i][`strMeal`]}</h2> 
+    <img src="${response[`data`][`meals`][i][`strMealThumb`]}"/>
+    </div>
+    `;
 }
 }
 function chicken_failure(error){
