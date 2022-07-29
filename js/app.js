@@ -1,6 +1,7 @@
 function success_function(response){
-    box[`innerHTML`] += `<h1> Below is the Random meal</h1>`;
+
     for(let i = 0; i < response[`data`][`meals`].length; i++){
+        box[`innerHTML`] += `<h1> Below is the Random meal</h1>`;
       box[`innerHTML`] += `<h2 id="place">This is ${response[`data`][`meals`][i][`strArea`]} dish</h1>`;
       box[`innerHTML`] += `<p id="name">The name of the dish is ${response[`data`][`meals`][i][`strMeal`]}</p>`;
       box[`innerHTML`] += `<h2 id="heading_instructions"> Step by step instructions to make ${response[`data`][`meals`][i][`strMeal`]}</h2>`;
@@ -9,7 +10,7 @@ function success_function(response){
     }
 }
 function failure_function(error){
-box[`innerHTML`] = `<p>There is some error in getting photos</p>`;
+box[`innerHTML`] = `<p>here is some error in getting photos try again </p>`;
 }
 axios.request({
     url: `https://www.themealdb.com/api/json/v1/1/random.php`
