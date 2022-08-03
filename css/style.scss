@@ -1,16 +1,26 @@
-body{
+body {
     background-color: antiquewhite;
     padding: 5%;
     width: 60%;
     margin: auto;
     text-align: center;
 }
-h2{
+
+h2 {
     color: green;
 }
-h3{
+
+h3 {
     line-height: 2;
 }
-#chicken_box{
+
+#box_categories {
     display: grid;
+    width: 30vw;
+    margin: auto;
+    .item {
+        padding: 10px;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
 }
