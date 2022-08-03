@@ -41,7 +41,6 @@ function failure_items(error) {
     box_items[`innerHTML`] = `<h2>An error occurred</h2>`;
 }
 function get_items(details) {
-    item[`innerHTML`] = `This is the button for` + item[`innerHTML`];
     axios.request({
         url: `https://themealdb.com/api/json/v1/1/random.php`
     }).then(success_items).catch(failure_items);
