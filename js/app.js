@@ -33,20 +33,31 @@ axios.request({
 }).then(success_categories).catch(failure_categories);
 
 function success_items(response) {
-    box_items[`innerHTML`] += `success`;
-    }
-    function failure_items(error) {
-        box_items[`innerHTML`] = `<h2>An error occurred</h2>`;
-    }
-    function get_items(details) {
-        axios.request({
-            url: `https://www.themealdb.com/api/json/v1/1/filter.php`
-        }).then(success_items).catch(failure_items);
-    }
-
-let item = document.getElementsByClassName(`item`);
-for (let i = 0; i < item.length; i++) {
-item[i].addEventListener(`click`,get_items);
+    let meals = response[`data`][`meals`];
+    let meals_data = JSON.stringify(meals);
+    Cookies.set(`category_items`, meals_data);
 }
+function failure_items(error) {
+    box_items[`innerHTML`] = `<h2>An error occurred</h2>`;
+}
+function get_items(details) {
+        let value_c = details[`target`][`innerHTML`];
+        axios.request({
+            url: `https://www.themealdb.com/api/json/v1/1/filter.php`,
+            params: {
+                c: value_c
+            }
+        }).then(success_items).catch(failure_items);
+}
+
+let box_button = document.getElementById(`box_categories`);
+box_button.addEventListener(`click`, get_items);
+
 let box_category = document.getElementById(`box_categories`);
 let box_items = document.getElementById(`box_items`);
+
+let cookies_value = Cookies.get(`category_items`);
+let data = JSON.parse(cookies_value);
+for (let i = 0; i < data.length; i++) {
+    box_items[`innerHTML`] += `<div>${data[i][`strMeal`]}</div>`;
+}
