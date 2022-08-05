@@ -19,7 +19,7 @@
 
 function success_categories(response) {
     for (let i = 0; i < response[`data`][`meals`].length; i++) {
-        box_category[`innerHTML`] += `<button class="item" id="button_${response[`data`][`meals`][i][`strCategory`]}">${response[`data`][`meals`][i][`strCategory`]}</button`;
+        box_category[`innerHTML`] += `<button class="item" id="button_${response[`data`][`meals`][i][`strArea`]}">${response[`data`][`meals`][i][`strArea`]}</button`;
     }
 }
 function failure_categories(error) {
@@ -28,7 +28,7 @@ function failure_categories(error) {
 axios.request({
     url: `https://www.themealdb.com/api/json/v1/1/list.php`,
     params: {
-        c: `list`
+        a: `list`
     }
 }).then(success_categories).catch(failure_categories);
 
@@ -42,13 +42,13 @@ function failure_items(error) {
     box_items[`innerHTML`] = `<h2>An error occurred</h2>`;
 }
 function get_items(details) {
-        let value_c = details[`target`][`innerHTML`];
-        axios.request({
-            url: `https://www.themealdb.com/api/json/v1/1/filter.php`,
-            params: {
-                c: value_c
-            }
-        }).then(success_items).catch(failure_items);
+    let value_c = details[`target`][`innerHTML`];
+    axios.request({
+        url: `https://www.themealdb.com/api/json/v1/1/filter.php`,
+        params: {
+            a: value_c
+        }
+    }).then(success_items).catch(failure_items);
 }
 
 let box_button = document.getElementById(`box_categories`);
@@ -58,7 +58,9 @@ let box_category = document.getElementById(`box_categories`);
 let box_items = document.getElementById(`box_items`);
 
 let cookies_value = Cookies.get(`category_items`);
-let data = JSON.parse(cookies_value);
-for (let i = 0; i < data.length; i++) {
-    box_items[`innerHTML`] += `<div>${data[i][`strMeal`]}</div>`;
+if (cookies_value) {
+    let data = JSON.parse(cookies_value);
+    for (let i = 0; i < data.length; i++) {
+        box_items[`innerHTML`] += `<div>${data[i][`strMeal`]}</div>`;
+    }
 }

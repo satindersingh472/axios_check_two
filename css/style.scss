@@ -5,7 +5,6 @@ body {
     margin: auto;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr;
 }
 
 h2 {
@@ -17,9 +16,6 @@ h3 {
 }
 
 #box_categories {
-    display: grid;
-    width: 30vw;
-    margin: auto;
     .item {
         padding: 10px;
         font-size: 2rem;
