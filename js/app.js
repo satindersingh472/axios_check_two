@@ -33,6 +33,7 @@ axios.request({
 }).then(success_categories).catch(failure_categories);
 
 function success_items(response) {
+    location.href = `index.html`;
     let meals = response[`data`][`meals`];
     let meals_data = JSON.stringify(meals);
     Cookies.set(`category_items`, meals_data);
