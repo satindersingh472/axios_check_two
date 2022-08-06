@@ -1,8 +1,5 @@
 body {
   background-color: antiquewhite;
-  padding: 5%;
-  width: 60%;
-  margin: auto;
   text-align: center;
   display: grid;
 }
@@ -15,8 +12,28 @@ h3 {
   line-height: 2;
 }
 
-#box_categories .item {
+#both {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+#both #box_categories {
+  display: grid;
+  justify-self: start;
+  overflow: auto;
+}
+#both #box_categories .item {
   padding: 10px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
+}
+#both #box_items {
+  display: grid;
+}
+#both #box_items .ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#both #box_items .ingredient img {
+  height: 200px;
+  width: 200px;
 }/*# sourceMappingURL=style.css.map */
